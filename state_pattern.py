@@ -79,7 +79,7 @@ class AudioPlayer:
     def __init__(self):
         self.state = ReadyState(self)
         self.playlist = ['Barbie Girl', 'Búp Bê Bằng Bông', 'Mysterious Girl']
-        self.is_playing = False
+        self.is_playing = False  # We could also create another LockedPlayingState to remove this
         self.current_song = 0
 
     def click_lock(self):

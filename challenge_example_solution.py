@@ -15,7 +15,7 @@ class State:
 class OffState(State):
     def click_on(self):
         self.car.on()
-        self.car.change_state(StoppedState(self.car))
+        self.car.change_state(OnState(self.car))
 
     def click_go(self, _):
         print('Did nothing')
@@ -36,10 +36,10 @@ class MovingState(State):
 
     def click_stop(self):
         self.car.stop()
-        self.car.change_state(StoppedState(self.car))
+        self.car.change_state(OnState(self.car))
 
 
-class StoppedState(State):
+class OnState(State):
     def click_on(self):
         self.car.off()
         self.car.change_state(OffState(self.car))
@@ -70,22 +70,18 @@ class TeslaCar:
         self.state.click_stop()
     
     def on(self):
-        self.is_on = True
         print('Engine On!')
     
     def off(self):
-        self.is_on = False
         print('Engine Off!')
 
     def go(self):
-        self.is_moving = True
         print(f'Moving!')
     
     def go_fast(self):
         print(f'Moving FASTER!')
 
     def stop(self):
-        self.is_moving = False
         print('Stopped')
 
 
